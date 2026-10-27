@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimal</title>
+</head>
+<body>
+
+    <input type="text" id="invoer">
+    <button id="knop">Change</button>
+
+    <h1 id="titel">Welcome</h1>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const txt = params.get('txt');
+
+        if (txt) {
+            document.getElementById('titel').textContent = txt;
+            document.getElementById('invoer').value = txt;
+        }
+
+        document.getElementById('knop').addEventListener('click', function() {
+            const getypteTekst = document.getElementById('invoer').value;
+            window.location.href = window.location.pathname + '?txt=' + encodeURIComponent(getypteTekst);
+        });
+    </script>
+
+</body>
+</html>
